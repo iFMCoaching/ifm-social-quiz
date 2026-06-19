@@ -957,7 +957,8 @@ function nextStepClose(a, goal) {
       '- Full strategy on the call: you do not leave with homework. You leave with a direction. A specific plan for your nutrition, your training, and your next move.',
       'After the call, you get a full written report covering everything we discussed. No trying to remember what was said. It is all written down.',
       'You also get six months of access to my private coaching membership site, including lessons, recipes, travel strategies, dining out guidance, emotional eating support, videos, podcasts, and ebooks.',
-      'The session is $397. For someone who has been guessing, restarting, or trying to piece things together alone, this is the fastest way to get a real plan without committing to full coaching. You walk away knowing exactly what to do and why.'
+      'The session is $397. For someone who has been guessing, restarting, or trying to piece things together alone, this is the fastest way to get a real plan without committing to full coaching. You walk away knowing exactly what to do and why.',
+      '[[CTA_LOW_COST]]'
     ].join('\n\n');
   }
 
@@ -965,7 +966,8 @@ function nextStepClose(a, goal) {
     'You said you are interested in possibly hiring a coach. That tells me something. People who are ready for coaching have usually already tried the other two paths. They know that more information is not always the answer. They need someone to look at the full picture and tell them what is actually going on.',
     'The next step is a free one-on-one discovery call with me. This is not a sales call. It is a real conversation about where you are, what your goal requires, and whether coaching is actually the right fit for you.',
     'On that call, I look at how much fat you need to lose, how long it will realistically take, and exactly what needs to happen to get you there. I review your full picture and give you clarity on what your program needs to look like.',
-    'At the end, if coaching makes sense, I will walk you through the options. If it does not, I will tell you honestly. There is no pressure and no pitch. Just a real conversation about your next best move.'
+    'At the end, if coaching makes sense, I will walk you through the options. If it does not, I will tell you honestly. There is no pressure and no pitch. Just a real conversation about your next best move.',
+    '[[CTA_COACHING]]'
   ].join('\n\n');
 }
 
@@ -985,7 +987,13 @@ function showResult(name, rawText, intent) {
       continue;
     }
 
-    if (line === '[[SMS_BUTTON]]') {
+    if (line === '[[CTA_LOW_COST]]') {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<div style="text-align:center;margin:24px 0;"><a href="#ctaBox" class="cta-btn" onclick="document.getElementById('ctaBox').scrollIntoView({behavior:'smooth'});return false;">I'm Interested in the Breakthrough Session</a></div>`;
+    } else if (line === '[[CTA_COACHING]]') {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<div style="text-align:center;margin:24px 0;"><a href="#ctaBox" class="cta-btn" onclick="document.getElementById('ctaBox').scrollIntoView({behavior:'smooth'});return false;">Schedule My Free Coaching Call</a></div>`;
+    } else if (line === '[[SMS_BUTTON]]') {
       if (inList) { html += '</ul>'; inList = false; }
       html += `<div style="text-align:center;margin:16px 0;">
         <a href="${escapeHTML(CONFIG.smsLink)}" class="cta-btn" style="background:#184D9B;">Text Aaron About the Breakthrough Session</a>
