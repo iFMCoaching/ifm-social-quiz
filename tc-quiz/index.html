@@ -501,6 +501,8 @@ function humanReadableAnswers(a) {
 function sendToMakeInBackground(payload) {
   if (!isConfigured(CONFIG.leadWebhookUrl)) return;
 
+  console.log('recommended_tags:', JSON.stringify(payload.recommended_tags));
+
   try {
     fetch(CONFIG.leadWebhookUrl, {
       method: 'POST',
