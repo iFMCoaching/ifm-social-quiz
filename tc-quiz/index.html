@@ -402,7 +402,7 @@ async function submitQuiz() {
     assessment_summary: assessment.summary,
     assessment_text: assessment.text,
     cta_path: answers.intent,
-    recommended_tags: leadTags(answers, assessment.summary)
+    recommended_tags: JSON.stringify(leadTags(answers, assessment.summary))
   });
 
   setTimeout(() => showResult(name, assessment.text, answers.intent), 450);
