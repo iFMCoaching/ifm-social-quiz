@@ -384,8 +384,21 @@ async function submitQuiz() {
 
   const assessment = buildAssessment(answers);
   sendToMakeInBackground({
-    ...answers,
-    human_readable_answers: humanReadableAnswers(answers),
+    name: name,
+    email: email,
+    submitted_at: answers.submitted_at,
+    intent: answers.intent,
+    primary_goal: answers.primary_goal,
+    priority: answers.priority,
+    journey: answers.journey,
+    nutrition: answers.nutrition,
+    exercise: answers.exercise,
+    exercise_days: answers.exercise_days,
+    results: answers.results,
+    duration: answers.duration,
+    obstacles: answers.obstacles,
+    vision: answers.vision,
+    human_readable_answers: JSON.stringify(humanReadableAnswers(answers)),
     assessment_summary: assessment.summary,
     assessment_text: assessment.text,
     cta_path: answers.intent,
