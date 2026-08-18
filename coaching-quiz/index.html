@@ -962,37 +962,8 @@ The good news is frequency is already solved. That is the hardest part for most 
   };
 }
 
-function tcObstacleBlocks(a) {
-  const obs = a.obstacles || [];
-  const lines = [];
-
-  if (obs.includes('consistency')) {
-    lines.push('##You said consistency has been your problem##');
-    lines.push('You know what to do. You just cannot keep doing it. That is exactly what real coaching is built to solve. The program runs on structure, not motivation. You have direct access to me and weekly check-ins, so consistency stops depending on how motivated you feel that day.');
-  }
-  if (obs.includes('accountability')) {
-    lines.push('##You said you need someone in your corner##');
-    lines.push('That is the foundation of coaching. You have direct text access to me. Not a bot, not a team member. Nobody disappears silently in this program.');
-  }
-  if (obs.includes('tried_everything')) {
-    lines.push('##You said you have tried a lot of things and nothing has clicked##');
-    lines.push('Coaching is not another program to try. It is a different container entirely. Different level of accountability. A coach who adjusts the plan when life gets hard.');
-  }
-  if (obs.includes('life')) {
-    lines.push('##You said your schedule gets in the way##');
-    lines.push('This kind of coaching is designed for people without perfect schedules. Not for people with extra time. The plan is built around your life, not around ideal conditions. Clients have done this during tax season, 12-hour workdays, and two-hour daily commutes. The system works in imperfect conditions. That is the whole point.');
-  }
-  if (obs.includes('knowledge')) {
-    lines.push('##You said you are not fully clear on what to do##');
-    lines.push('With real coaching, I build your entire plan from scratch. Nutrition. Training. Habits. You never have to guess what comes next. Every week you know exactly where you are and exactly what you need to do.');
-  }
-
-  return lines.join('\n\n');
-}
 
 function nextStepClose(a, goal) {
-  const obstacleSection = tcObstacleBlocks(a);
-
   if (a.intent === 'self_study') {
     const parts = [
       `You said you want to figure this out on your own. Start there. Use what you learned in this assessment and take it seriously. If your goal is to ${goal}, do not try to fix everything at once. Pick the first thing and build from there.`,
@@ -1018,8 +989,7 @@ function nextStepClose(a, goal) {
       'The session is $397. For someone who has been guessing, restarting, or trying to piece things together alone, this is the fastest way to get a real plan without committing to full coaching. You walk away knowing exactly what to do and why.',
       '**Bonus: Private Coaching Membership Site Access**',
       'You also get six months of access to my private coaching membership site. This is the same resource library my high-ticket one-on-one clients get as part of their program. Lessons, recipes, travel strategies, dining out guidance, emotional eating support, videos, podcasts, and ebooks. Six months of access included. A $1,200 value.',
-      '[[CTA_LOW_COST]]',
-      obstacleSection
+      '[[CTA_LOW_COST]]'
     ];
     return parts.filter(Boolean).join('\n\n');
   }
@@ -1030,8 +1000,6 @@ function nextStepClose(a, goal) {
     'Here is what coaching with me looks like.',
     'Think about what it would mean to walk into a room looking and feeling like the most disciplined version of yourself. That is what real coaching builds toward, week after week.',
     'You get a personalized nutrition plan and training plan built around your life. No macros. No calorie counting. Daily habit tracking through the iFM app. Bi-weekly check-ins with me. Direct text access to me. Not a bot.',
-    'Based on your answers in this quiz, coaching will help with the specific things you said you struggle with.',
-    obstacleSection,
     'If you execute consistently and do not see measurable change in your tracked metrics, we adjust the plan together. No questions asked. My job is to make results inevitable, not to make you guess.',
     '[[CTA_COACHING]]'
   ].filter(Boolean).join('\n\n');
